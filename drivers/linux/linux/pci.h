@@ -79,6 +79,15 @@ struct msix_entry {
 	u16	entry;
 };
 
+
+/* If you want to know what to call your pci_dev, ask this function.
+ * Again, it's a wrapper around the generic device.
+ */
+static inline const char *pci_name(const struct pci_dev *pdev)
+{
+	return pdev->name;
+}
+
 void* pci_alloc_consistent(struct pci_dev *hwdev, size_t size, dma_addr_t *dma_handle);
 void pci_free_consistent(struct pci_dev *hwdev, size_t size, void *vaddr, dma_addr_t dma_handle);
 int pci_enable_device(struct pci_dev *dev);
